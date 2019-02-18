@@ -1,0 +1,10 @@
+{{ $baseUrl := .Site.BaseURL }}
+<a href="{{ .Permalink }}/index.html" rel="bookmark" class="post-card">
+  <div class="summary-image" style="background: url('{{ .Params.SummaryImage }}') center center / cover;">&nbsp;</div>
+  <div class="content">
+    <h3 class="title">{{ .Title }}</h3>
+    <p class="event-dates">{{ .Params.EventDates }}</p>
+    <p class="author">posted by {{ .Params.Author }}</p>
+    <p class="summary">{{ .Summary }}</p>
+  </div>
+</a>

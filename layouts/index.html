@@ -1,0 +1,10 @@
+{{ partial "header.html" . }}
+{{ partial "hero.html" . }}
+
+<section class="posts">
+{{ range first 10 (.Data.Pages) }}
+  {{ partial "post_summary.html" . }}
+{{ end }}
+</section>
+
+{{ partial "footer.html" . }}

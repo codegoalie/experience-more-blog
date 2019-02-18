@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="{{ with .Site.LanguageCode}}{{ . }}{{ else }}en-US{{end}}">
+<head>
+  <base href="{{ .Site.BaseURL }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  {{ .Hugo.Generator }}
+
+  <title>{{ if .IsPage }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400|Shadows+Into+Light+Two" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  {{ $styles := resources.Get "scss/main.scss" | toCSS | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{ partial "header_includes.html" }}
+
+  <link href="/favicon.png" rel="shortcut icon">
+
+  {{ if .RSSLink }}
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ end }}
+</head>
+
+<body>
